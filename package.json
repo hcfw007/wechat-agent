@@ -1,0 +1,14 @@
+{
+  "name": "wechat-mouthpiece",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "wechaty": "^0.68.1"
+  }
+}
