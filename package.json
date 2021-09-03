@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "wechaty": "^0.68.1"
+    "i": "^0.3.6",
+    "npm": "^7.22.0",
+    "wechaty": "^0.68.1",
+    "wechaty-plugin-contrib": "^0.14.23"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.30.0",
