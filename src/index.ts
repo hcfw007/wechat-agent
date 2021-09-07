@@ -1,6 +1,6 @@
 import { Wechaty, ScanStatus } from "wechaty"
 import { QRCodeTerminal } from 'wechaty-plugin-contrib'
-import config from './base.config'
+import config from '@config/base.config'
 import Contact from './contact'
 
 const qrCodeConfig = {
@@ -27,10 +27,16 @@ bot
       clearTimeout($mp.scanTimeout)
       delete $mp.scanTimeout
     }
-    $mp.contact = await (new Contact(bot).getContactList())
-    console.log($mp.contact)
+    $mp.contact = new Contact(bot)
+    $mp.target = await $mp.contact.getTargetContact()
+    console.log(`total contact count: ${(await $mp.contact.getContactList()).length }`)
   })
-  .on("message", (message) => console.log(`Message: ${message}`))
+  .on("message", async (message) => {
+    if (message.room() === null && message.talker() !== bot.userSelf()) {
+      await $mp.target.say(`${ message.talker().name() } said: `)
+      await message.forward($mp.target)
+    }
+  })
 
 async function main() {
   
