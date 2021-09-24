@@ -21,7 +21,11 @@ export const init = async (g: Global): Promise<void> => {
     await bot.stop()
     process.exit(0)
   } else {
+    if (!g.target) {
+      await g.commander.say(`did not find contact ${config.targetContactName }, using commander as contact.`)
+      g.target = g.commander
+    }
     log.info(PRE, `initialized`)
-    g.commander.say(`mouthpiece is ready!`)
+    await g.commander.say(`mouthpiece is ready!`)
   }
 }
