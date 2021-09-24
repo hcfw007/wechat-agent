@@ -1,6 +1,5 @@
 import { Contact, Wechaty } from 'wechaty'
 import config from '@config/base.config'
-import { ContactType } from 'wechaty-puppet'
 
 export default class mpContact {
   bot: Wechaty
