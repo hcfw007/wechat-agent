@@ -1,4 +1,4 @@
-import { Wechaty, ScanStatus } from "wechaty"
+import { Wechaty, ScanStatus, log } from "wechaty"
 import { QRCodeTerminal } from 'wechaty-plugin-contrib'
 import config from '@config/base.config'
 import { Global } from './utils/data.interface'
@@ -14,11 +14,13 @@ const $mp:Global = {
   commander: null
 }
 
+const PRE = 'index'
+
 bot.use(QRCodeTerminal(qrCodeConfig))
 bot
   .on("scan", (qrcode, status) => {
     if (status === ScanStatus.Waiting || status === ScanStatus.Timeout) {
-      console.log('Scan QR code to login')
+      log.info('Scan QR code to login')
       if (!$mp.scanTimeout) {
         $mp.scanTimeout = setTimeout(() => {
           throw new Error('Scan QR code Timeout')
@@ -27,7 +29,7 @@ bot
     }
   })
   .on("login", async (user) => {
-    console.log(`User ${user} logged in`)
+    log.info(`User ${user} logged in`)
     if ($mp.scanTimeout) {
       clearTimeout($mp.scanTimeout)
       delete $mp.scanTimeout
