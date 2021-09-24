@@ -23,7 +23,8 @@ bot
       log.info('Scan QR code to login')
       if (!$mp.scanTimeout) {
         $mp.scanTimeout = setTimeout(() => {
-          throw new Error('Scan QR code Timeout')
+          log.info('Scan QR code Timeout')
+          process.exit(0)
         }, config.maxLoginTime)
       }
     }
