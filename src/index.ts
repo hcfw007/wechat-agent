@@ -3,6 +3,7 @@ import { QRCodeTerminal } from 'wechaty-plugin-contrib'
 import config from '@config/base.config'
 import { Global } from './utils/data.interface'
 import { init } from './controls/init'
+import { handleMessage } from './controls/messages'
 
 const qrCodeConfig = {
   small: true,   // default: false - the size of the printed QR Code in terminal
@@ -40,10 +41,7 @@ bot
     await init($mp)
   })
   .on("message", async (message) => {
-    if (message.room() === null && message.talker() !== bot.userSelf()) {
-      await $mp.target.say(`${ message.talker().name() } said: `)
-      await message.forward($mp.target)
-    }
+    handleMessage($mp, message)
   })
 
 async function main() {
