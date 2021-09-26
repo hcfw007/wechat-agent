@@ -19,5 +19,9 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'semi': ["error", "never", { "beforeStatementContinuationChars": "never" }],
+    'quotes': ['error', 'single', { 'avoidEscape': true, 'allowTemplateLiterals': true }],
+    "object-curly-spacing": ["error", "always"],
+    "array-bracket-spacing": ["error", "always"],
+    "computed-property-spacing": ["error", "never", { "enforceForClassMembers": true }],
   },
 };

@@ -1,4 +1,4 @@
-import { Wechaty, Contact } from "wechaty"
+import { Wechaty, Contact } from 'wechaty'
 
 
 export interface Global {

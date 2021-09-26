@@ -1,5 +1,5 @@
-import { Global } from "@src/utils/data.interface"
-import { log, Message } from "wechaty"
+import { Global } from '@src/utils/data.interface'
+import { log, Message } from 'wechaty'
 import { processCommand } from './commander'
 
 const PRE = 'messages'

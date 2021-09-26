@@ -1,5 +1,5 @@
 import { Global } from '../utils/data.interface'
-import { log } from "wechaty"
+import { log } from 'wechaty'
 import config from '@config/base.config'
 
 const PRE = 'init'
@@ -12,7 +12,7 @@ export const init = async (g: Global): Promise<void> => {
   const commanderPromise = bot.Contact.find({ 
     name: config.commanderContactName
   })
-  const results = await Promise.all([targetPromise, commanderPromise])
+  const results = await Promise.all([ targetPromise, commanderPromise ])
   g.target = results[0]
   g.commander = results[1]
   log.info(PRE, `commander: ${ g.commander?.name() }, target: ${ g.target?.name() }`)

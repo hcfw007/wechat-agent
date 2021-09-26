@@ -1,10 +1,10 @@
-import { Wechaty, ScanStatus, log } from "wechaty"
+import { Wechaty, ScanStatus, log } from 'wechaty'
 import { QRCodeTerminal } from 'wechaty-plugin-contrib'
 import config from '@config/base.config'
 import { Global } from './utils/data.interface'
 import { init } from './controls/init'
 import { handleMessage } from './controls/messages'
-import { donutToken } from "@config/token"
+import { donutToken } from '@config/token'
 
 const qrCodeConfig = {
   small: true,   // default: false - the size of the printed QR Code in terminal
@@ -27,7 +27,7 @@ const PRE = 'index'
 
 bot.use(QRCodeTerminal(qrCodeConfig))
 bot
-  .on("scan", (qrcode, status) => {
+  .on('scan', (qrcode, status) => {
     if (status === ScanStatus.Waiting || status === ScanStatus.Timeout) {
       log.info('Scan QR code to login')
       if (!$mp.scanTimeout) {
@@ -45,10 +45,10 @@ bot
       delete $mp.scanTimeout
     }
   })
-  .on("ready", async () => {
+  .on('ready', async () => {
     await init($mp)
   })
-  .on("message", async (message) => {
+  .on('message', async (message) => {
     handleMessage($mp, message)
   })
 
