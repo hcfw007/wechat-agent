@@ -16,6 +16,7 @@ export const init = async (g: Global): Promise<void> => {
   g.target = results[0]
   g.commander = results[1]
   log.info(PRE, `commander: ${ g.commander?.name() }, target: ${ g.target?.name() }`)
+  log.verbose(PRE, `commander id: ${ g.commander?.id }, target id: ${ g.target?.id }`)
   if (!g.commander) {
     log.warn(PRE, `cannot find commander ${ config.commanderContactName }, you should talk to the commander first to ensure it's in conversation list if you are using web wechat puppet ,quiting...`)
     await bot.stop()

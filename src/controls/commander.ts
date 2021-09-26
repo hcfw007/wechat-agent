@@ -13,7 +13,6 @@ export const processCommand = async(g: Global, message: Message) => {
   const pairList = commandStr.split(' ')
   const command = pairList.shift()
   let commandObject: any = {}
-  console.log(commandStr, command)
   if (commandList.includes(command)) {
     commandObject = {
       command,
