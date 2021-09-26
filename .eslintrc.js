@@ -23,5 +23,7 @@ module.exports = {
     "object-curly-spacing": ["error", "always"],
     "array-bracket-spacing": ["error", "always"],
     "computed-property-spacing": ["error", "never", { "enforceForClassMembers": true }],
+    "no-unused-vars": "off",
+    '@typescript-eslint/no-unused-vars': ["warn", { "args": "none" }]
   },
 };
