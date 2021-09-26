@@ -39,7 +39,7 @@ bot
       }
     }
   }).on('login', (user) => {
-    log.info(`User ${user} logged in`)
+    log.info(`User ${user}, id ${ user.id } logged in`)
     if ($mp.scanTimeout) {
       clearTimeout($mp.scanTimeout)
       delete $mp.scanTimeout

@@ -9,11 +9,10 @@ export const handleMessage = async (g: Global, message: Message) => {
   const target = g.target
   const talker = message.talker()
   const room = message.room()
-  log.info(PRE, `received ${ Message.Type[message.type()] } from talker: ${ talker?.name() } or room: ${ await room?.topic() }, message id: ${ message.id }`)
+  log.info(PRE, `received ${Message.Type[message.type()]} from talker: ${talker?.name()}, id: ${talker?.id} and room: ${await room?.topic()}, id: ${ room?.id }, message id: ${ message.id }`)
   if (!g.ready) {
     log.info(PRE, `message ${ message.id } discarded as the bot is not ready yet`)
   }
-  log.verbose(PRE, `message id: ${ message.id }, talker id: ${ talker?.id }, room id: ${ room?.id }`)
   if (talker.name() !== g.bot.userSelf().name() && !room) {
     log.info(PRE, `forward message ${ message.id } to ${ target.name() }`)
     await target.say(`${ talker.name() } said:`)
