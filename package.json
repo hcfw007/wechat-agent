@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "npx ts-node ./src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node ./src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:log": "WECHATY_LOG=silly npm start"
   },
   "author": "",
   "license": "ISC",
