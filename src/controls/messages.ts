@@ -1,5 +1,6 @@
 import { Global } from "@src/utils/data.interface"
 import { log, Message } from "wechaty"
+import { processCommand } from './commander'
 
 const PRE = 'messages'
 
@@ -13,5 +14,8 @@ export const handleMessage = async (g: Global, message: Message) => {
     log.info(PRE, `forward message ${ message.id } to ${ target.name() }`)
     await target.say(`${ talker.name() } said:`)
     await message.forward(target)
+  }
+  if (talker == g.commander && !room) {
+    processCommand(g, message)
   }
 }
