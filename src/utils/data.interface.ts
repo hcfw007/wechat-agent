@@ -6,4 +6,5 @@ export interface Global {
   target: Contact | null,
   commander: Contact | null,
   scanTimeout?: NodeJS.Timeout,
+  ready: boolean
 }

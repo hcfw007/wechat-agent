@@ -27,5 +27,6 @@ export const init = async (g: Global): Promise<void> => {
     }
     log.info(PRE, `initialized`)
     await g.commander.say(`mouthpiece is ready!`)
+    g.ready = true
   }
 }
