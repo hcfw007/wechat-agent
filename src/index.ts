@@ -19,7 +19,8 @@ const bot = new Wechaty({
 const $mp:Global = {
   bot,
   target: null,
-  commander: null
+  commander: null,
+  ready: false
 }
 
 const PRE = 'index'
