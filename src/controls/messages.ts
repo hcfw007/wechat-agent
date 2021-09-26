@@ -13,13 +13,13 @@ export const handleMessage = async (g: Global, message: Message) => {
   if (!g.ready) {
     log.info(PRE, `message ${ message.id } discarded as the bot is not ready yet`)
   }
-  if (talker.name() !== g.bot.userSelf().name() && !room) {
+  if (talker.id !== g.bot.userSelf().id && !room) { // somehow talker === bot.userSelf() does not work for this puppet
     log.info(PRE, `forward message ${ message.id } to ${ target.name() }`)
     await target.say(`${ talker.name() } said:`)
     // await message.forward(target)
     await target.say(message.text())
   }
-  if (talker == g.commander && !room) {
+  if (talker.id == g.commander.id && !room) { // this can be decided with direct object comparison, but to unify all contact deciding process, I use id here too
     processCommand(g, message)
   }
 }
