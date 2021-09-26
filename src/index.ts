@@ -4,12 +4,18 @@ import config from '@config/base.config'
 import { Global } from './utils/data.interface'
 import { init } from './controls/init'
 import { handleMessage } from './controls/messages'
+import { donutToken } from "@config/token"
 
 const qrCodeConfig = {
   small: true,   // default: false - the size of the printed QR Code in terminal
 }
 
-const bot = new Wechaty()
+const bot = new Wechaty({
+  puppet: 'wechaty-puppet-service',
+  puppetOptions: {
+    token: donutToken
+  }
+})
 const $mp:Global = {
   bot,
   target: null,
@@ -31,13 +37,14 @@ bot
         }, config.maxLoginTime)
       }
     }
-  })
-  .on("login", async (user) => {
+  }).on('login', (user) => {
     log.info(`User ${user} logged in`)
     if ($mp.scanTimeout) {
       clearTimeout($mp.scanTimeout)
       delete $mp.scanTimeout
     }
+  })
+  .on("ready", async () => {
     await init($mp)
   })
   .on("message", async (message) => {
