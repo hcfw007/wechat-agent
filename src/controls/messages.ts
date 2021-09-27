@@ -12,6 +12,7 @@ export const handleMessage = async (g: Global, message: Message) => {
   log.info(PRE, `received ${Message.Type[message.type()]} from talker: ${talker?.name()}, id: ${talker?.id} and room: ${await room?.topic()}, id: ${ room?.id }, message id: ${ message.id }`)
   if (!g.ready) {
     log.info(PRE, `message ${ message.id } discarded as the bot is not ready yet`)
+    return
   }
   if (talker.id !== g.bot.userSelf().id && !room) { // somehow talker === bot.userSelf() does not work for this puppet
     log.info(PRE, `forward message ${ message.id } to ${ target.name() }`)
