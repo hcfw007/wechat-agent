@@ -1,11 +1,14 @@
 import { Global } from '../utils/data.interface'
-import { log } from 'wechaty'
+import { log, Room } from 'wechaty'
 import config from '@config/base.config'
+import { getRoomNameList } from '@src/utils/helpers'
 
 const PRE = 'init'
 
 export const init = async (g: Global): Promise<void> => {
   const bot = g.bot
+
+  // setup target and commander
   const targetPromise = bot.Contact.find({
     name: config.targetContactName
   })
@@ -26,8 +29,19 @@ export const init = async (g: Global): Promise<void> => {
       await g.commander.say(`did not find contact ${config.targetContactName }, using commander as contact.`)
       g.target = g.commander
     }
-    log.info(PRE, `initialized`)
-    await g.commander.say(`mouthpiece is ready!`)
-    g.ready = true
   }
+
+  // setup rooms
+
+  const rooms:Array<Room> = []
+  for (const roomName of config.allowedRooms) {
+    rooms.concat(await bot.Room.findAll({ topic: roomName }))
+  }
+  g.rooms = rooms
+  g.roomNameList = await getRoomNameList(rooms)
+  log.info(PRE, `allowed rooms: ${ g.roomNameList.join(',') }`)
+
+  log.info(PRE, `initialized`)
+  await g.commander.say(`mouthpiece is ready!`)
+  g.ready = true
 }
