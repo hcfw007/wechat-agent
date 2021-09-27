@@ -14,7 +14,7 @@ export const handleMessage = async (g: Global, message: Message) => {
     log.info(PRE, `message ${ message.id } discarded as the bot is not ready yet`)
     return
   }
-  if (talker.id !== g.bot.userSelf().id && !room) { // somehow talker === bot.userSelf() does not work for this puppet
+  if (!talker.self() && !room) { // somehow talker === bot.userSelf() does not work for this puppet
     log.info(PRE, `forward message ${ message.id } to ${ target.name() }`)
     await target.say(`${ talker.name() } said:`)
     // await message.forward(target)
