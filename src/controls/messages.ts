@@ -16,6 +16,10 @@ export const handleMessage = async (g: Global, message: Message) => {
     return
   }
   if (!talker.self()) { // somehow talker === bot.userSelf() does not work for this puppet
+    if (talker.id == g.commander.id && !room) { // this can be decided with direct object comparison, but to unify all contact deciding process, I use id here too
+      await processCommand(g, message)
+      return
+    }
     if (room && !g.roomNameList.includes(await room.topic())) {
       log.info(PRE, `message ${message.id} discarded as it's from a room not in allowed list`)
       return
@@ -24,8 +28,5 @@ export const handleMessage = async (g: Global, message: Message) => {
     await target.say(`${ talker.name() } ${ room ? 'in room ' + await room.topic() : '' } said:`)
     // await message.forward(target)
     await target.say(message.text())
-  }
-  if (talker.id == g.commander.id && !room) { // this can be decided with direct object comparison, but to unify all contact deciding process, I use id here too
-    processCommand(g, message)
   }
 }
