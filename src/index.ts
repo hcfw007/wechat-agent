@@ -20,7 +20,9 @@ const $mp:Global = {
   bot,
   target: null,
   commander: null,
-  ready: false
+  ready: false,
+  rooms: [],
+  roomNameList: [],
 }
 
 const PRE = 'index'

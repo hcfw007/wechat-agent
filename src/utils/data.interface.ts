@@ -1,4 +1,4 @@
-import { Wechaty, Contact } from 'wechaty'
+import { Wechaty, Contact, Room, Message } from 'wechaty'
 
 
 export interface Global {
@@ -6,5 +6,16 @@ export interface Global {
   target: Contact | null,
   commander: Contact | null,
   scanTimeout?: NodeJS.Timeout,
-  ready: boolean
+  ready: boolean,
+  rooms: Array<Room>,
+  roomNameList: Array<string>,
+}
+
+export interface CommandObject {
+  command: string,
+  [property: string]: string
+}
+
+export interface Action {
+  (g: Global, message: Message, commandObject: CommandObject): Promise<void>
 }
