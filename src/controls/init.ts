@@ -35,7 +35,7 @@ export const init = async (g: Global): Promise<void> => {
 
   const rooms:Array<Room> = []
   for (const roomName of config.allowedRooms) {
-    rooms.concat(await bot.Room.findAll({ topic: roomName }))
+    rooms.push(...await bot.Room.findAll({ topic: roomName }))
   }
   g.rooms = rooms
   g.roomNameList = await getRoomNameList(rooms)
