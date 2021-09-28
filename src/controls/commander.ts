@@ -11,11 +11,11 @@ export const processCommand = async(g: Global, message: Message) => {
   const command = pairList.shift()
   let commandObject: CommandObject
   if (command in actions) {
-    actions[command](g, message, commandObject)
     commandObject = {
       command,
       ...parsePayload(pairList)
     }
     log.info(PRE, `command parsed: ${JSON.stringify(commandObject)}`)
+    actions[command](g, message, commandObject)
   }
 }
