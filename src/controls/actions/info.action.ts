@@ -1,9 +1,9 @@
-import { Global } from '@src/utils/data.interface'
-import { log, Message } from 'wechaty'
+import { Action } from '@src/utils/data.interface'
+import { log } from 'wechaty'
 
 const PRE = 'info'
 
-export const info = async (g: Global, message: Message, commandObject: any) => {
+export const info: Action = async (g, message, commandObject) => {
   const infoStr = `
 当前微信名：${g.bot.userSelf().name()}
 操作微信名：${g.commander.name()}

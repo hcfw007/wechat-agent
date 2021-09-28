@@ -1,4 +1,4 @@
-import { Global } from '@src/utils/data.interface'
+import { CommandObject, Global } from '@src/utils/data.interface'
 import { log, Message } from 'wechaty'
 import { parsePayload } from '@src/utils/helpers'
 import { actions } from './actions'
@@ -9,7 +9,7 @@ export const processCommand = async(g: Global, message: Message) => {
   const commandStr = message.text()
   const pairList = commandStr.split(' ')
   const command = pairList.shift()
-  let commandObject: any = {}
+  let commandObject: CommandObject
   if (command in actions) {
     actions[command](g, message, commandObject)
     commandObject = {

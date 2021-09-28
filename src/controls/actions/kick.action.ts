@@ -1,9 +1,9 @@
-import { Global } from '@src/utils/data.interface'
-import { log, Message } from 'wechaty'
+import { Action } from '@src/utils/data.interface'
+import { log } from 'wechaty'
 
 const PRE = 'kick'
 
-export const kick = async (g: Global, message: Message, commandObject: any) => {
+export const kick: Action = async (g, message, commandObject) => {
   const bot = g.bot
   const room = await bot.Room.find(commandObject.room)
   if (!room) {
