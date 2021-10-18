@@ -1,0 +1,1 @@
+export const donutToken = process.env.DONUT_TOKEN
