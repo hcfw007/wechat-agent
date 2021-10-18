@@ -17,5 +17,7 @@ export const processCommand = async(g: Global, message: Message) => {
     }
     log.info(PRE, `command parsed: ${JSON.stringify(commandObject)}`)
     actions[command](g, message, commandObject)
+  } else {
+    g.commander.say(`unknow command`)
   }
 }
