@@ -7,7 +7,7 @@ const PRE = 'commander'
 
 export const processCommand = async(g: Global, message: Message) => {
   const commandStr = message.text()
-  const pairList = commandStr.split(' ')
+  const pairList = commandStr.split('/(?<!\\) /g')
   const command = pairList.shift()
   let commandObject: CommandObject
   if (command in actions) {

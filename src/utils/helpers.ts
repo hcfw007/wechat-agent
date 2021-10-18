@@ -6,7 +6,7 @@ export function parsePayload(payload?: string[]): any {
   }
   const result = {}
   for (const item of payload) {
-    result[item.split('=')[0]] = item.split('=')[1]
+    result[item.split(/(?<!\\)=/g)[0]] = item.split(/(?<!\\)=/g)[1]
   }
   return result
 }
