@@ -12,17 +12,17 @@ const qrCodeConfig = {
   small: true,   // default: false - the size of the printed QR Code in terminal
 }
 
-const wechatyOption: WechatyOptions = {}
+const wechatyOptions: WechatyOptions = {}
 if (donutToken) {
-  wechatyOption.puppet = 'wechaty-puppet-service'
-  wechatyOption.puppetOptions = {
-    toke: donutToken,
+  wechatyOptions.puppet = 'wechaty-puppet-service'
+  wechatyOptions.puppetOptions = {
+    token: donutToken,
   }
 } else {
   log.info(PRE, 'no token provided, using web puppet to demonstrate, some function may not be working properly')
 }
 
-const bot = new Wechaty(wechatyOption)
+const bot = new Wechaty(wechatyOptions)
 const $mp:Global = {
   bot,
   target: null,
