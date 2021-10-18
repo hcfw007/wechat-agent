@@ -26,4 +26,4 @@ jobs:
           docker build -t hcfw007/wechaty-mouthpiece:$IMAGE_TAG .
         
       - name: Deploy to Docker Hub
-        run: docker push $hcfw007/wechaty-mouthpiece:$IMAGE_TAG
+        run: docker push hcfw007/wechaty-mouthpiece:$IMAGE_TAG
