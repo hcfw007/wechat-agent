@@ -1,4 +1,4 @@
-import { Wechaty, ScanStatus, log } from 'wechaty'
+import { Wechaty, ScanStatus, log, WechatyOptions } from 'wechaty'
 import { QRCodeTerminal } from 'wechaty-plugin-contrib'
 import config from '@config/base.config'
 import { Global } from './utils/data.interface'
@@ -6,16 +6,23 @@ import { init } from './controls/init'
 import { handleMessage } from './controls/messages'
 import { donutToken } from '@config/token'
 
+const PRE = 'index'
+
 const qrCodeConfig = {
   small: true,   // default: false - the size of the printed QR Code in terminal
 }
 
-const bot = new Wechaty({
-  puppet: 'wechaty-puppet-service',
-  puppetOptions: {
-    token: donutToken
+const wechatyOptions: WechatyOptions = {}
+if (donutToken) {
+  wechatyOptions.puppet = 'wechaty-puppet-service'
+  wechatyOptions.puppetOptions = {
+    token: donutToken,
   }
-})
+} else {
+  log.info(PRE, 'no token provided, using web puppet to demonstrate, some function may not be working properly')
+}
+
+const bot = new Wechaty(wechatyOptions)
 const $mp:Global = {
   bot,
   target: null,
@@ -24,8 +31,6 @@ const $mp:Global = {
   rooms: [],
   roomNameList: [],
 }
-
-const PRE = 'index'
 
 bot.use(QRCodeTerminal(qrCodeConfig))
 bot
