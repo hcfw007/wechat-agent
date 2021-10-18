@@ -1,0 +1,7 @@
+version: "3.5"
+services:
+  redis:
+    image: wm
+    container_name: wechaty-mouthpiece
+    restart: always
+    env_file: .env
