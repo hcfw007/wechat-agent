@@ -1,0 +1,32 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    name: Publish
+    needs: [build]
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/heads/v[0-9]+'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to DockerHub Registry
+        run: echo ${{ secrets.DOCKER_PERSONAL_ACCESS_TOKEN }} | docker login -u hcfw007 --password-stdin
+
+      - name: Build the Docker image
+        env: 
+          IMAGE_TAG: |
+            $(cat package.json \
+            | grep version \
+            | head -1 \
+            | awk -F: '{ print $2 }' \
+            | sed 's/[",]//g' \
+            | tr -d '[[:space:]]')
+        run: docker build -t hcfw007/wechaty-mouthpiece:$IMAGE_TAG .
+        
+      - name: Deploy to Docker Hub
+        run: docker push $hcfw007/wechaty-mouthpiece:$IMAGE_TAG
