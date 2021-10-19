@@ -23,5 +23,5 @@ jobs:
             | awk -F: '{ print $2 }' \
             | sed 's/[",]//g' \
             | tr -d '[[:space:]]')
-          docker build -t hcfw007/wechaty-mouthpiece:$IMAGE_TAG .
-          docker push hcfw007/wechaty-mouthpiece:$IMAGE_TAG
+          docker build -t hcfw007/wechat-mouthpiece:$IMAGE_TAG .
+          docker push hcfw007/wechat-mouthpiece:$IMAGE_TAG
