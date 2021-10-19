@@ -8,7 +8,8 @@ const actionDescription = {
   kick: '踢掉$room中的$target',
   info: '获取mouthpiece基本信息',
   roomManage: '根据$roomCommand进行群聊管理，目前支持add，将$target的群加入群聊白名单',
-  say: '在$in群聊或者对$to说话，内容是$content，单聊优先'
+  say: '在$in群聊或者对$to说话，内容是$content，单聊优先',
+  help: '使用说明'
 }
 
 const help: Action = async (g) => {
