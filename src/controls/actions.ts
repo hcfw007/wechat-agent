@@ -3,6 +3,7 @@ import { info } from './actions/info.action'
 import { say } from './actions/say.action'
 import { roomManage } from './actions/roomManage.action'
 import { list } from './actions/list.action'
+import { stat } from './actions/stat.action'
 
 import { Action } from '@src/utils/data.interface'
 
@@ -30,4 +31,5 @@ export const actions = {
   roomManage,
   list,
   help,
+  stat,
 }
