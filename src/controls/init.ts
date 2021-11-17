@@ -5,7 +5,7 @@ import { getRoomNameList, sleep } from '@src/utils/helpers'
 
 const PRE = 'init'
 
-export const init = async (g: Global, retries = 1): Promise<void> => {
+export const init = async (g: Global, retries = 3): Promise<void> => {
   const bot = g.bot
 
   // setup target and commander
