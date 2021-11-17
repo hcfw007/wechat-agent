@@ -1,5 +1,5 @@
 import { Wechaty, Contact, Room, Message } from 'wechaty'
-
+import { Stat } from './classes'
 
 export interface Global {
   bot: Wechaty
@@ -9,6 +9,7 @@ export interface Global {
   ready: boolean,
   rooms: Array<Room>,
   roomNameList: Array<string>,
+  stat: Stat,
 }
 
 export interface CommandObject {

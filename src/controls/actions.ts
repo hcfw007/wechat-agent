@@ -3,6 +3,7 @@ import { info } from './actions/info.action'
 import { say } from './actions/say.action'
 import { roomManage } from './actions/roomManage.action'
 import { list } from './actions/list.action'
+import { stat } from './actions/stat.action'
 
 import { Action } from '@src/utils/data.interface'
 
@@ -12,7 +13,8 @@ const actionDescription = {
   roomManage: '根据$roomCommand进行群聊管理，目前支持add，将$target的群加入群聊白名单',
   say: '在$in群聊或者对$to说话，内容是$content，单聊优先',
   list: '列出现有联系人和群名',
-  help: '使用说明'
+  help: '使用说明',
+  stat: '获取当前统计情况'
 }
 
 const help: Action = async (g) => {
@@ -30,4 +32,5 @@ export const actions = {
   roomManage,
   list,
   help,
+  stat,
 }
