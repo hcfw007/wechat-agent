@@ -11,7 +11,7 @@ export interface Global {
   roomNameList: Array<string>,
 }
 
-export class stat {
+export class Stat {
   messageReceived: number
   messageForwarded: number
   commandAccepted: number
