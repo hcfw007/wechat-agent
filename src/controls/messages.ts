@@ -20,11 +20,13 @@ export const handleMessage = async (g: Global, message: Message) => {
       await processCommand(g, message)
       return
     }
+    g.stat.messageReceived ++
     if (room && !g.roomNameList.includes(await room.topic())) {
       log.info(PRE, `message ${message.id} discarded as it's from a room not in allowed list`)
       return
     }
     log.info(PRE, `forward message ${ message.id } to ${ target.name() }`)
+    g.stat.messageForwarded ++
     await target.say(`${ talker.name() } ${ room ? 'in room ' + await room.topic() : '' } said:`)
     // await message.forward(target)
     await target.say(message.text())

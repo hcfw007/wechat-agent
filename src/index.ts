@@ -5,6 +5,7 @@ import { Global } from './utils/data.interface'
 import { init } from './controls/init'
 import { handleMessage } from './controls/messages'
 import { donutToken } from '@config/token'
+import { Stat } from './utils/classes'
 
 const PRE = 'index'
 
@@ -30,6 +31,7 @@ const $mp:Global = {
   ready: false,
   rooms: [],
   roomNameList: [],
+  stat: new Stat()
 }
 
 bot.use(QRCodeTerminal(qrCodeConfig))

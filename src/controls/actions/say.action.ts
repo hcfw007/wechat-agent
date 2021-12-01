@@ -42,5 +42,6 @@ export const say: Action = async (g, message, commandObject) => {
     infoStr += `to contact ${ await target.topic() }`
   }
   log.info(PRE, infoStr)
+  g.stat.messageSend ++
   await target.say(content)
 }

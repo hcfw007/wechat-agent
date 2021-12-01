@@ -1,7 +1,7 @@
 version: "3.5"
 services:
   redis:
-    image: hcfw007/wechaty-mouthpiece:1.0.0
-    container_name: wechaty-mouthpiece
+    image: hcfw007/wechat-mouthpiece:1.0.0
+    container_name: wechat-mouthpiece
     restart: always
     env_file: .env
