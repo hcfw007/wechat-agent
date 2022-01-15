@@ -1,7 +1,7 @@
 import { Global } from '../utils/data.interface'
-import { log, Room } from 'wechaty'
+import { Contact, log, Room } from 'wechaty'
 import config from '@config/base.config'
-import { getRoomNameList, sleep } from '@src/utils/helpers'
+import { getContactNameList, getRoomNameList, sleep } from '@src/utils/helpers'
 
 const PRE = 'init'
 
@@ -46,6 +46,16 @@ export const init = async (g: Global, retries = 3): Promise<void> => {
   g.rooms = rooms
   g.roomNameList = await getRoomNameList(rooms)
   log.info(PRE, `allowed rooms: ${ g.roomNameList.join(',') }`)
+
+  // setup contacts
+
+  const contacts: Array<Contact> = []
+  for (const contactName of config.disallowedContacts) {
+    contacts.push(...await bot.Contact.findAll({ name: contactName }))
+  }
+  g.contacts = contacts
+  g.contactNameList = await getContactNameList(contacts)
+  log.info(PRE, `disallowed contacts: ${g.contactNameList.join(',')}`)
 
   log.info(PRE, `initialized`)
   await g.commander.say(`mouthpiece is ready!`)

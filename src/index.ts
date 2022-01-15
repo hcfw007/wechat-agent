@@ -31,6 +31,8 @@ const $mp:Global = {
   ready: false,
   rooms: [],
   roomNameList: [],
+  contacts: [],
+  contactNameList: [],
   stat: new Stat()
 }
 

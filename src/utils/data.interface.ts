@@ -9,6 +9,8 @@ export interface Global {
   ready: boolean,
   rooms: Array<Room>,
   roomNameList: Array<string>,
+  contacts: Array<Contact>,
+  contactNameList: Array<string>,
   stat: Stat,
 }
 
