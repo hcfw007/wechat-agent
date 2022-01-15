@@ -28,6 +28,24 @@ export const configManage: Action = async (g, message, commandObject) => {
       }
       break
 
+    case 'addDisallowedContact':
+      const contactToAdd = await bot.Contact.find({ name: target })
+      if (contactToAdd) {
+        if (g.contacts.includes(contactToAdd)) {
+          log.info(PRE, `contact ${target} already disallowed`)
+          g.commander.say(`contact ${target} already disallowed`)
+          return
+        }
+        log.info(PRE, `add contact ${target} to disallowed contact list`)
+        g.contacts.push(contactToAdd)
+        g.contactNameList.push(await contactToAdd.name())
+        g.commander.say(`add contact ${target} to disallowed contact list`)
+      } else {
+        log.info(PRE, `cannot find contact ${target}`)
+        g.commander.say(`cannot find contact ${target}`)
+      }
+      break
+
   }
 
 }
