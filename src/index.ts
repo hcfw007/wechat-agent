@@ -33,7 +33,7 @@ const $mp:Global = {
   roomNameList: [],
   contacts: [],
   contactNameList: [],
-  stat: new Stat()
+  stat: new Stat(),
 }
 
 bot.use(QRCodeTerminal(qrCodeConfig))
