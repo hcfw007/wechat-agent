@@ -1,3 +1,4 @@
+import { DailyQuest } from '@src/controls/dailyQuest'
 import { Wechaty, Contact, Room, Message } from 'wechaty'
 import { Stat } from './classes'
 
@@ -12,6 +13,7 @@ export interface Global {
   contacts: Array<Contact>,
   contactNameList: Array<string>,
   stat: Stat,
+  dailyQuests: Array<DailyQuest>
 }
 
 export interface CommandObject {

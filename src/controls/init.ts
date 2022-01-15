@@ -2,6 +2,7 @@ import { Global } from '../utils/data.interface'
 import { Contact, log, Room } from 'wechaty'
 import config from '@config/base.config'
 import { getContactNameList, getRoomNameList, sleep } from '@src/utils/helpers'
+import { DailyQuest } from './dailyQuest'
 
 const PRE = 'init'
 
@@ -56,6 +57,14 @@ export const init = async (g: Global, retries = 3): Promise<void> => {
   g.contacts = contacts
   g.contactNameList = await getContactNameList(contacts)
   log.info(PRE, `disallowed contacts: ${g.contactNameList.join(',')}`)
+
+  // setup daily report
+
+  const dailyReport = new DailyQuest('daily report', () => {
+    g.commander.say(g.stat.toOutputString())
+  }, 0, 1)
+  dailyReport.start()
+  g.dailyQuests.push(dailyReport)
 
   log.info(PRE, `initialized`)
   await g.commander.say(`mouthpiece is ready!`)

@@ -23,7 +23,7 @@ export class Stat {
     this.overallCommandAccepted = 0
     this.overallMessageSend = 0
 
-    this.dailyReset = new DailyQuest('daily stat reset', this.reset.bind(this), 0, 0)
+    this.dailyReset = new DailyQuest('daily stat reset', this.reset.bind(this), 23, 59)
     this.dailyReset.start()
   }
 

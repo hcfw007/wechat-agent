@@ -32,6 +32,7 @@ export class DailyQuest {
   }
 
   setUpNext() {
+    log.info(PRE, `${this.name} setUpNext()`)
     const date = new Date()
     date.setHours(this.hour)
     date.setMinutes(this.minute)

@@ -34,6 +34,7 @@ const $mp:Global = {
   contacts: [],
   contactNameList: [],
   stat: new Stat(),
+  dailyQuests: [],
 }
 
 bot.use(QRCodeTerminal(qrCodeConfig))
