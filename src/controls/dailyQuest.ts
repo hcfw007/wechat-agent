@@ -32,13 +32,14 @@ export class DailyQuest {
   }
 
   setUpNext() {
-    log.info(PRE, `${this.name} setUpNext()`)
     const date = new Date()
     date.setHours(this.hour)
     date.setMinutes(this.minute)
+    date.setSeconds(0)
     if (date < new Date()) {
       date.setDate(date.getDate() + 1)
     }
+    log.info(PRE, `${this.name} setUpNext(), currentTime: ${ new Date().toLocaleString() }, nextTime: ${ date.toLocaleString }`)
     this.timeout = setTimeout(() => {
       this.fn()
       this.setUpNext()

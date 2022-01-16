@@ -1,6 +1,6 @@
 {
   "name": "wechat-mouthpiece",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.ts",
   "scripts": {
