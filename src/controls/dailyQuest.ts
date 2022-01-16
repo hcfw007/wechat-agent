@@ -35,6 +35,7 @@ export class DailyQuest {
     const date = new Date()
     date.setHours(this.hour)
     date.setMinutes(this.minute)
+    date.setSeconds(0)
     if (date < new Date()) {
       date.setDate(date.getDate() + 1)
     }
