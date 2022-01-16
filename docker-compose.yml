@@ -1,7 +1,7 @@
 version: "3.5"
 services:
   redis:
-    image: hcfw007/wechat-agent:1.0.0
+    image: hcfw007/wechat-agent:latest
     container_name: wechat-agent
     restart: always
     env_file: .env
