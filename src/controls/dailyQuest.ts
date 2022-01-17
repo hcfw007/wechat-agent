@@ -1,4 +1,4 @@
-import { log } from "wechaty"
+import { log } from 'wechaty'
 
 const PRE = 'DailyQuest'
 
@@ -6,7 +6,7 @@ export class DailyQuest {
   hour: number
   minute: number
   fn: Function
-  on: Boolean
+  on: boolean
   timeout: NodeJS.Timeout
   name: string
 
@@ -36,7 +36,7 @@ export class DailyQuest {
     date.setHours(this.hour)
     date.setMinutes(this.minute)
     date.setSeconds(0)
-    if (date < new Date()) {
+    if (date <= new Date()) {
       date.setDate(date.getDate() + 1)
     }
     log.info(PRE, `${this.name} setUpNext(), currentTime: ${ new Date().toLocaleString() }, nextTime: ${ date.toLocaleString() }`)
