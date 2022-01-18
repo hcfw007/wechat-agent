@@ -1,5 +1,7 @@
 import { Action } from '@src/utils/data.interface'
 import { log } from 'wechaty'
+import * as fs from 'fs'
+import * as path from 'path'
 
 const PRE = 'configManage'
 
@@ -48,4 +50,12 @@ export const configManage: Action = async (g, message, commandObject) => {
 
   }
 
+  const editableConfig = {
+    allowedRooms: g.roomNameList,
+    disallowedContacts: g.contactNameList
+  }
+  const str = JSON.stringify(editableConfig)
+  const file = path.join(__dirname, '..', '..', '..', 'config', 'editable.json')
+  fs.writeFileSync(file, str)
+  log.info(PRE, `write ${ str } to file ${ file }`)
 }
