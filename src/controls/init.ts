@@ -3,6 +3,7 @@ import { Contact, log, Room } from 'wechaty'
 import config from '@config/base.config'
 import { getContactNameList, getRoomNameList, sleep } from '@src/utils/helpers'
 import { DailyQuest } from './dailyQuest'
+import * as editableConfig from '@config/editable.json'
 
 const PRE = 'init'
 
@@ -41,7 +42,7 @@ export const init = async (g: Global, retries = 3): Promise<void> => {
   // setup rooms
 
   const rooms:Array<Room> = []
-  for (const roomName of config.allowedRooms) {
+  for (const roomName of editableConfig.allowedRooms) {
     rooms.push(...await bot.Room.findAll({ topic: roomName }))
   }
   g.rooms = rooms
@@ -51,7 +52,7 @@ export const init = async (g: Global, retries = 3): Promise<void> => {
   // setup contacts
 
   const contacts: Array<Contact> = []
-  for (const contactName of config.disallowedContacts) {
+  for (const contactName of editableConfig.disallowedContacts) {
     contacts.push(...await bot.Contact.findAll({ name: contactName }))
   }
   g.contacts = contacts
