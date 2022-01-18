@@ -5,3 +5,5 @@ services:
     container_name: wechat-agent
     restart: always
     env_file: .env
+    environment:
+      - TZ=Asia/Shanghai
