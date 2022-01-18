@@ -62,7 +62,7 @@ export const init = async (g: Global, retries = 3): Promise<void> => {
 
   const dailyReport = new DailyQuest('daily report', () => {
     g.commander.say(g.stat.toOutputString())
-  }, 0, 1)
+  }, 23, 59)
   dailyReport.start()
   g.dailyQuests.push(dailyReport)
 
