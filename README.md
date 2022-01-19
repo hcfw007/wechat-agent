@@ -1,5 +1,7 @@
 # wechat-agent
 
+[![Publish](https://github.com/hcfw007/wechat-agent/actions/workflows/publish.yml/badge.svg)](https://github.com/hcfw007/wechat-agent/actions/workflows/publish.yml)
+
 一个wechat机器人，主要功能是转发聊天信息到指定微信上，适合拥有多个微信但主要使用其中一个的人。开发依赖wechaty开源项目，请访问[官网](https://wechaty.js.org/)获取更多信息。
 
 使用时依赖wechaty-token，详情请参考[这里](https://wechaty.js.org/docs/puppet-services/)。大部分提供商都可以试用，通过发博客贡献内容可获取长达一年的使用权。理论上来说所有token都可兼容，但实际根据底层实现可能需要修改。开发时基于puppet-donut进行。
