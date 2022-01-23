@@ -10,7 +10,7 @@ import { Action } from '@src/utils/data.interface'
 const actionDescription = {
   kick: '踢掉$room中的$target',
   info: '获取mouthpiece基本信息',
-  configManage: '根据$command进行配置管理，目前支持addAllowedRoom，将$target的群加入群聊白名单',
+  configManage: '根据$command进行配置管理，目前支持addAllowedRoom，将$target的群加入群聊白名单;addDisallowedContact，将$target的个人加入黑名单',
   say: '在$in群聊或者对$to说话，内容是$content，单聊优先',
   list: '列出现有联系人和群名',
   help: '使用说明',
